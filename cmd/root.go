@@ -7,6 +7,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	_ "go.uber.org/automaxprocs"
+	"job-go/cmd/seed_cmd"
 	"job-go/cmd/task_cmd"
 	"job-go/pkg/logr"
 	"job-go/pkg/valider"
@@ -38,6 +39,10 @@ func init() {
 
 	// 範例及測試
 	rootCmd.AddCommand(task_cmd.CmdHello)
+	// Seed - Invoice
+	rootCmd.AddCommand(seed_cmd.CmdSeedUsage)
+	seed_cmd.CmdSeedUsage.Flags().String("scale", "", "數量[million]")
+	seed_cmd.CmdSeedUsage.Flags().String("seesaw", "", "要執行的操作[up, down]")
 }
 
 func initConfig() {
