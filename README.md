@@ -20,8 +20,6 @@ go run main.go seed::usage --seesaw [seesaw] --scale [scale]
 
 - scale: [million]
 
-## Go Command
-
 ## GO
 
 ### 套件管理 Go Module
