@@ -78,8 +78,8 @@ func seedUsageUpMillion() {
 
 	usageFields := getUsageFields()
 
-	planAsrTestSkuId := "96b11b8e-bb84-4ab3-a141-adf3cd8a5809"
-	//planTtsTestSkuId := "ec461cd8-05af-4d8f-a2be-74641c005435"
+	skuIdArray := []string{"1", "2", "3", "4"}
+	skuIdArrayRange := len(skuIdArray) - 1
 
 	for i := 1; i < keyAmount; i++ {
 		key := fmt.Sprintf("test_%d", i)
@@ -95,12 +95,15 @@ func seedUsageUpMillion() {
 				rowAmount := rowRandomArray[int(random.Int64())]
 				total += rowAmount
 
+				random2, _ := rand.Int(rand.Reader, big.NewInt(int64(skuIdArrayRange)))
+				skuId := skuIdArray[int(random2.Int64())]
+
 				stmt := "INSERT INTO usages ( " + usageFields + " ) VALUES "
 				for l := 1; l <= rowAmount; l++ {
 					// ASR
 					invStmt := fmt.Sprintf(`( '%s', '%s', '%s', null, '%s', 1 )`,
 						"test_session_id",
-						planAsrTestSkuId,
+						skuId,
 						key,
 						tempDate.Format("2006-01-02T15:00:00Z"),
 					)
