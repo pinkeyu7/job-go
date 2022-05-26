@@ -2,16 +2,17 @@ package cmd
 
 import (
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/joho/godotenv"
-	log "github.com/sirupsen/logrus"
-	"github.com/spf13/cobra"
-	_ "go.uber.org/automaxprocs"
 	"job-go/cmd/seed_cmd"
 	"job-go/cmd/task_cmd"
 	"job-go/pkg/logr"
 	"job-go/pkg/valider"
 	"os"
+
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
+	log "github.com/sirupsen/logrus"
+	"github.com/spf13/cobra"
+	_ "go.uber.org/automaxprocs"
 )
 
 var rootCmd = &cobra.Command{
@@ -43,6 +44,11 @@ func init() {
 	rootCmd.AddCommand(seed_cmd.CmdSeedUsage)
 	seed_cmd.CmdSeedUsage.Flags().String("scale", "", "數量[million]")
 	seed_cmd.CmdSeedUsage.Flags().String("seesaw", "", "要執行的操作[up, down]")
+	// Task - PriceCurl
+	rootCmd.AddCommand(task_cmd.CmdTaskBillingCurl)
+	task_cmd.CmdTaskBillingCurl.Flags().String("dataType", "", "資料類型[service, sku, price]")
+	task_cmd.CmdTaskBillingCurl.Flags().String("startYm", "", "開始月份[YYYYMM]")
+	task_cmd.CmdTaskBillingCurl.Flags().String("endYm", "", "結束月份[YYYYMM]")
 }
 
 func initConfig() {

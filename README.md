@@ -20,6 +20,25 @@ go run main.go seed::usage --seesaw [seesaw] --scale [scale]
 
 - scale: [million]
 
+
+### Billing Curl Post
+
+1. Service
+    ```
+   go run main.go task::billing-curl --dataType service
+   ```
+
+
+2. Sku
+    ```
+    go run main.go task::billing-curl --dataType sku 
+    ```
+
+3. Price
+    ```
+    go run main.go task::billing-curl --dataType price --startYm 202201 --endYm 202212 
+    ```
+
 ## GO
 
 ### 套件管理 Go Module
