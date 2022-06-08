@@ -46,19 +46,13 @@ func jobBillingCurl(cmd *cobra.Command, args []string) {
 	skus := []Sku{
 		{1, "asr_standard", "streaming-15secs-bytes", "standard"},
 		{2, "tts_16K", "1M-characters", "standard"},
-		{2, "tts_32K", "1M-characters", "standard"},
-		{3, "news_1Y", "query-1-time", "standard"},
 		{3, "news_3M", "query-1-time", "standard"},
-		{3, "news_1M", "query-1-time", "standard"},
 	}
 
 	skuPrices := []SkuPrice{
 		{1, 1, 240, 0.2, 0.2, "asr_standard"},
 		{2, 2, 1000, 0.72, 0.72, "tts_16K"},
-		{2, 3, 1000, 0.72, 0.72, "tts_32K"},
-		{3, 4, 50000, 2, 1.25, "news_1Y"},
-		{3, 5, 50000, 1.4, 0.875, "news_3M"},
-		{3, 6, 50000, 0.8, 0.5, "news_1M"},
+		{3, 3, 2000, 10, 20, "news_3M"},
 	}
 
 	switch dataType {
