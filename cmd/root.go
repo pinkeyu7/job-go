@@ -40,10 +40,13 @@ func init() {
 
 	// 範例及測試
 	rootCmd.AddCommand(task_cmd.CmdHello)
-	// Seed - Invoice
+	// Seed - Usage
 	rootCmd.AddCommand(seed_cmd.CmdSeedUsage)
 	seed_cmd.CmdSeedUsage.Flags().String("scale", "", "數量[million]")
 	seed_cmd.CmdSeedUsage.Flags().String("seesaw", "", "要執行的操作[up, down]")
+	// Seed - Billing Usage Hour
+	rootCmd.AddCommand(seed_cmd.CmdSeedBillingUsageHour)
+	seed_cmd.CmdSeedBillingUsageHour.Flags().String("seesaw", "", "要執行的操作[up, down]")
 	// Task - PriceCurl
 	rootCmd.AddCommand(task_cmd.CmdTaskBillingCurl)
 	task_cmd.CmdTaskBillingCurl.Flags().String("dataType", "", "資料類型[service, sku, price]")
